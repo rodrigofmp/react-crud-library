@@ -61,11 +61,11 @@ export default class Edit extends Component {
         }         
         return (
             <div style={{marginTop: 10}}>
-                <h3>edit Book {this.props.match.params.id}</h3>
+                <h3>Edit Book {this.props.match.params.id}</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Edit Book Title:  </label>
-                        <input type="text" className="form-control" value={this.state.title} onChange={this.onChangeTitle}/>
+                        <input type="text" className="form-control" value={this.state.title} onChange={this.onChangeTitle} required/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Change Book" className="btn btn-primary"/>
