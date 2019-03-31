@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import packageJson from '../../package.json';
 
 export default class Create extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class Create extends Component {
             title: this.state.title
         };
 
-        axios.post('http://localhost:55729/api/books', obj)
+        axios.post(packageJson.backendBaseURL + 'api/books', obj)
         .then(res => {
             if (res.status == 200)
             {

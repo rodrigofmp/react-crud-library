@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import packageJson from '../../package.json';
 
 export default class Edit extends Component {
 
@@ -16,7 +17,7 @@ export default class Edit extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:55729/api/books/'+this.props.match.params.id)
+        axios.get(packageJson.backendBaseURL + 'api/books/'+this.props.match.params.id)
             .then(response => {
                 this.setState({ 
                     title: response.data.title 
@@ -40,7 +41,7 @@ export default class Edit extends Component {
             title: this.state.title
         };
 
-        axios.put('http://localhost:55729/api/books/'+this.props.match.params.id, obj)
+        axios.put(packageJson.backendBaseURL + 'api/books/'+this.props.match.params.id, obj)
         .then(res => {
             if (res.status == 200)
             {
@@ -50,8 +51,7 @@ export default class Edit extends Component {
                 });
             }    
         });
-        
-        //this.props.history.push('/');
+
       }
 
     render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import packageJson from '../../package.json';
 
 class TableRow extends Component {
 
@@ -11,7 +12,7 @@ class TableRow extends Component {
 
   delete() {
 
-    axios.delete('http://localhost:55729/api/books/' + this.props.obj.id)
+    axios.delete(packageJson.backendBaseURL + 'api/books/' + this.props.obj.id)
       .then(res => {
         if (res.status == 200) {
           window.location.reload();

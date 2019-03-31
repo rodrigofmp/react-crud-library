@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
+import packageJson from '../../package.json';
 
 export default class Index extends Component {
 
@@ -9,7 +10,7 @@ export default class Index extends Component {
       this.state = {books: []};
     }
     componentDidMount(){
-      axios.get('http://localhost:55729/api/books')
+      axios.get(packageJson.backendBaseURL + 'api/books')
         .then(response => {
           this.setState({ books: response.data });
         })
